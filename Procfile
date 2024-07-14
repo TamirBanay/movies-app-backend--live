@@ -1,1 +1,1 @@
-web: venv\Scripts\gunicorn movies_app.wsgi
+web: gunicorn movies_app.wsgi
