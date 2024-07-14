@@ -145,10 +145,11 @@ DATABASES = {
     }
 }
 
-# הגדרת מסד הנתונים של Heroku אם נמצא משתנה הסביבה DATABASE_URL
-if os.environ.get('DATABASE_URL'):
+# Update the DATABASES setting to use the ClearDB URL if available
+if os.environ.get('CLEARDB_DATABASE_URL'):
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
+    DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
