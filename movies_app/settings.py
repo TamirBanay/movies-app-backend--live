@@ -87,6 +87,7 @@ LOGIN_URL = 'login'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  
+    "http://localhost:3001",  
     "http://localhost:8080",
     "https://my-movie-app-backend-f2e367df623e.herokuapp.com",
 
