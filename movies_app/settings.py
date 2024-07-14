@@ -132,6 +132,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'movies_app.wsgi.application'
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -147,7 +149,6 @@ DATABASES = {
 if os.environ.get('DATABASE_URL'):
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
