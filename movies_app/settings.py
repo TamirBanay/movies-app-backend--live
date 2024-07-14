@@ -141,14 +141,14 @@ DATABASES = {
         'NAME': 'moviesSchema',
         'USER': 'root',
         'PASSWORD': 'tamirsapir055',
-        'HOST': 'localhost',
+        'HOST': '10.0.0.14',
         'PORT': '3306',
     }
 }
 
-# הגדרת מסד הנתונים של Heroku אם נמצא משתנה הסביבה CLEARDB_DATABASE_URL
 if 'CLEARDB_DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default'] = dj_database_url.config(env='CLEARDB_DATABASE_URL', conn_max_age=600, ssl_require=True)
+    DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
