@@ -133,12 +133,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'movies_app.wsgi.application'
 
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moviesSchema',
+        'NAME': 'moviesschema',
         'USER': 'root',
         'PASSWORD': 'tamirsapir055',
         'HOST': 'localhost',
@@ -146,9 +144,10 @@ DATABASES = {
     }
 }
 
-if 'CLEARDB_DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.config(env='CLEARDB_DATABASE_URL', conn_max_age=600, ssl_require=True)
+if os.environ.get('CLEARDB_DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(default=os.environ.get('CLEARDB_DATABASE_URL'))
     DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
