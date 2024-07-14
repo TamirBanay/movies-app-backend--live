@@ -141,7 +141,7 @@ DATABASES = {
         'NAME': 'moviesSchema',
         'USER': 'root',
         'PASSWORD': 'tamirsapir055',
-        'HOST': '10.0.0.14',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
