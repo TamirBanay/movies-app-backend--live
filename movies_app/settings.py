@@ -131,18 +131,24 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'movies_app.wsgi.application'
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moviesschema',
-        'USER': 'root',
-        'PASSWORD': 'tamirsapir055',
-        'HOST': '10.0.0.14',
-        'PORT': '3306',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_nV1_eIu51Df739fmItr',
+        'HOST': 'mysql-my-movies-app-banay9329-9f17.f.aivencloud.com',
+        'PORT': '12141',
+        # 'OPTIONS': {
+        #     'ssl': {
+        #         'ca': os.path.join(BASE_DIR, 'certificates', 'ca.pem'),
+        #     },
+        # },
     }
 }
+
 
 if os.environ.get('CLEARDB_DATABASE_URL'):
     DATABASES['default'] = dj_database_url.config(default=os.environ.get('CLEARDB_DATABASE_URL'))
