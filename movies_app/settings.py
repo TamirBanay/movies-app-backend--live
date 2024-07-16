@@ -97,6 +97,14 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 
+CORS_EXPOSE_HEADERS = [
+    'Cross-Origin-Opener-Policy',
+    'Cross-Origin-Embedder-Policy',
+]
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
+SECURE_CROSS_ORIGIN_EMBEDDER_POLICY = 'require-corp'
+
 AUTH_USER_MODEL = 'members.CustomUser'
 
 MIDDLEWARE = [
