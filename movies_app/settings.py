@@ -83,6 +83,7 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+
 LOGIN_URL = 'login'
 
 CORS_ALLOWED_ORIGINS = [
@@ -93,7 +94,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://tamirbanay.github.io"
 ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 
