@@ -15,6 +15,7 @@ from django.contrib.auth import logout,login
 from django.contrib import messages
 from .serializers import UserSerializer
 from .serializers import SignupSerializer
+from rest_framework.permissions import AllowAny
 
 class LoginView(APIView):
     def post(self, request):
@@ -56,12 +57,19 @@ class UserDetailView(APIView):
         return Response(serializer.data)
         
 class LogoutView(APIView):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = [AllowAny]
+
     def post(self, request, *args, **kwargs):
         user = getattr(request, "user", None)
         return Response({'message': 'Logged out successfully'}, status=status.HTTP_200_OK)
-    
-    
+
+    def options(self, request, *args, **kwargs):
+        response = Response()
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+        return response
+
     
     
 class SignupView(APIView):
