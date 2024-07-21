@@ -24,8 +24,20 @@ from rest_framework.decorators import api_view
 
 
 
+
 class AddSeriesFavoriteView(APIView):
     def post(self, request):
+        tmdb_series_id = request.data.get('tmdb_series_id')
+        user_id = request.data.get('user')
+
+        if not tmdb_series_id or not user_id:
+            return Response({'error': 'tmdb_series_id and user are required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Check if the series is already in the user's favorites
+        if Favorite_series.objects.filter(tmdb_series_id=tmdb_series_id, user_id=user_id).exists():
+            return Response({'error': 'This series is already in the user\'s favorites'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Create the favorite series entry
         serializer = FavoriteSeriesSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
