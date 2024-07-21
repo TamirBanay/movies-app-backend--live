@@ -14,8 +14,6 @@ class Favorite(models.Model):
 class Favorite_series(models.Model):
     tmdb_series_id = models.IntegerField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    
+
     class Meta:
-      unique_together = ('tmdb_series_id', 'user',)
-      
-      
+        unique_together = ('tmdb_series_id', 'user',)
