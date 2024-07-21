@@ -15,4 +15,4 @@ class FavoriteMovieSerializer(serializers.ModelSerializer):
 class FavoriteSeriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite_series
-        fields = '__all__'
+        fields = ['tmdb_series_id', 'user']
